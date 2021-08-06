@@ -59,9 +59,7 @@ class Adam_LRDecay(Optimizer):
             self.get_lr_func = lambda cur_lr, t, eta0, alpha, milestones, T_max: eta0 / (1.0 + alpha*(t**0.5))
         elif scheme == 'step-decay':
             self.get_lr_func = lambda cur_lr, t, eta0, alpha, milestones, T_max: cur_lr * alpha if t in milestones else cur_lr
-        elif scheme == 'cosine':
-            self.get_lr_func = lambda cur_lr, t, eta0, alpha, milestones, T_max: 0.5 * (1 + math.cos(t*math.pi/T_max)) * eta0
-
+ 
 
     def __setstate__(self, state):
         super(Adam_LRDecay, self).__setstate__(state)
